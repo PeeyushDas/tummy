@@ -23,7 +23,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
 
     _offsetAnimation = Tween<Offset>(
       begin: const Offset(0.0, 0.0),
-      end: const Offset(0.0, -1.0),
+      end: const Offset(0.0, -1.37),
     ).animate(
       CurvedAnimation(
         parent: _controller,
@@ -71,8 +71,8 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
                 position: _offsetAnimation,
                 child: Image.asset(
                   'assets/images/logo.png',
-                  width: logoWidth,
-                  height: logoWidth / 2, // Maintain the same aspect ratio
+                  width: logoWidth * 0.70,
+                  height: logoWidth * 0.70, // Maintain the same aspect ratio
                   fit: BoxFit.cover,
                 ),
               ),

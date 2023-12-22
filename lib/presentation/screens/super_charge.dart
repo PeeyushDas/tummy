@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_pro/utils/size_config.dart';
 
 class SuperChargeScreen extends StatelessWidget {
   @override
@@ -7,16 +8,13 @@ class SuperChargeScreen extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Color(0XFF212226),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            // Handle back button press
-          },
+        leading: BackButton(
+          color: Colors.white,
         ),
-        title: const Row(
+        title: Row(
           children: [
             Icon(Icons.flash_on, color: Colors.red),
-            SizedBox(width: 8),
+            SizedBox(width: SizeConfig.safeBlockHorizontal * 2),
             Text('Super Charges', style: TextStyle(color: Colors.red)),
           ],
         ),
@@ -30,7 +28,7 @@ class SuperChargeScreen extends StatelessWidget {
         ],
       ),
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             end: Alignment.topCenter,
             begin: Alignment.bottomCenter,
@@ -42,52 +40,38 @@ class SuperChargeScreen extends StatelessWidget {
           ),
         ),
         child: ListView.builder(
-          itemCount: 12, // Increase the itemCount by 1 for the last card
+          itemCount: 4, // Increase the itemCount by 1 for the last card
           itemBuilder: (context, index) {
-            if (index == 10) {
+            if (index == 3) {
               // If it's the last card
               return const Card(
                 child: ListTile(
-                  style: ListTileStyle.drawer,
+                  visualDensity: VisualDensity.standard,
                   leading: Icon(Icons.lock_open), // Replace with suitable icon
-                  title: Text('Unlock at 11th visit'),
-                ),
-              );
-            } else if (index == 11) {
-              // If it's the new card
-              return const Card(
-                color: Colors.black,
-                child: ListTile(
-                  // Replace with suitable icon
-                  title: Center(
-                    child: Text('Buy Subscription!!',
-                        style: TextStyle(color: Colors.red)),
-                  ),
+                  title: Text('Unlock at 7th visit'),
                 ),
               );
             }
-            {
-              return Card(
-                child: ListTile(
-                  visualDensity: VisualDensity.comfortable,
-                  leading: const CircleAvatar(
-                    backgroundImage: AssetImage(
-                        'assets/images/logo.png'), // Replace with the actual image path
-                  ),
-                  title: const Text('Food Item'),
-                  subtitle: const Text('Food Description'),
-                  trailing: CircleAvatar(
-                    backgroundColor: Colors.transparent,
-                    child: Text(
-                      '${index + 1}',
-                      style: TextStyle(
-                        color: Colors.red,
-                      ),
+            return Card(
+              child: ListTile(
+                visualDensity: VisualDensity.comfortable,
+                leading: CircleAvatar(
+                  backgroundImage: AssetImage(
+                      'assets/images/logo.png'), // Replace with the actual image path
+                ),
+                title: Text('Food Item'),
+                subtitle: Text('Food Description'),
+                trailing: CircleAvatar(
+                  backgroundColor: Colors.transparent,
+                  child: Text(
+                    '${2 * index + 1}',
+                    style: TextStyle(
+                      color: Colors.red,
                     ),
                   ),
                 ),
-              );
-            }
+              ),
+            );
           },
         ),
       ),
