@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:test_pro/presentation/screens/final_confirmation_screen.dart';
-import 'package:test_pro/presentation/screens/reservation_screen.dart';
+import 'package:test_pro/utils/size_config.dart';
 
 class ConfirmationPage extends StatelessWidget {
   final int numberOfGuests;
@@ -16,9 +16,9 @@ class ConfirmationPage extends StatelessWidget {
 
   Widget buildInfoCard(BuildContext context) {
     return Card(
-      color: Color(0xFF2C2C2C), // Slightly different background for the card
+      color: Color(0xFF2C2C2C),
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0 * SizeConfig.safeBlockHorizontal),
         child: Column(
           children: <Widget>[
             buildInfoRow(
@@ -43,14 +43,18 @@ class ConfirmationPage extends StatelessWidget {
 
   Widget buildInfoRow(String label, String value) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding:
+          EdgeInsets.symmetric(vertical: 8.0 * SizeConfig.safeBlockVertical),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Text(label, style: TextStyle(fontSize: 20, color: Colors.white70)),
+          Text(label,
+              style: TextStyle(
+                  fontSize: 2.0 * SizeConfig.safeBlockHorizontal,
+                  color: Colors.white70)),
           Text(value,
               style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 2.0 * SizeConfig.safeBlockHorizontal,
                   color: Colors.yellow[600],
                   fontWeight: FontWeight.bold)),
         ],
@@ -66,14 +70,15 @@ class ConfirmationPage extends StatelessWidget {
         backgroundColor: Colors.deepPurple,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0 * SizeConfig.safeBlockHorizontal),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Icon(Icons.check_circle,
-                size: 60, color: Colors.yellow[600]), // Confirmation icon
-            SizedBox(height: 20),
+                size: 6.0 * SizeConfig.safeBlockHorizontal,
+                color: Colors.yellow[600]),
+            SizedBox(height: 2.0 * SizeConfig.safeBlockVertical),
             buildInfoCard(context),
             Spacer(),
             ElevatedButton(
@@ -88,8 +93,10 @@ class ConfirmationPage extends StatelessWidget {
                   style: TextStyle(color: Colors.white)),
               style: ElevatedButton.styleFrom(
                 primary: Colors.deepPurple,
-                padding: EdgeInsets.symmetric(vertical: 15),
-                textStyle: TextStyle(fontSize: 18),
+                padding: EdgeInsets.symmetric(
+                    vertical: 1.5 * SizeConfig.safeBlockVertical),
+                textStyle:
+                    TextStyle(fontSize: 1.8 * SizeConfig.safeBlockHorizontal),
               ),
             ),
           ],

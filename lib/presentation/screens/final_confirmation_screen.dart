@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_pro/utils/size_config.dart';
 
 class ReservationConfirmedPage extends StatelessWidget {
   @override
@@ -7,20 +8,22 @@ class ReservationConfirmedPage extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text('Confirmation',
-            style: TextStyle(color: Colors.white, fontSize: 18)),
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 2.0 * SizeConfig.safeBlockHorizontal)),
         backgroundColor: Color(0xFF1A237E),
       ),
       body: Container(
-        color: Color(0xFF121212), // Dark background color
+        color: Color(0xFF121212),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(2.0 * SizeConfig.safeBlockHorizontal),
               child: Text(
                 'Sweet Weekend!\nTruffles, Well Done!',
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: 2.4 * SizeConfig.safeBlockHorizontal,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                   height: 1.5, // Line height
@@ -28,44 +31,47 @@ class ReservationConfirmedPage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
             ),
-            SizedBox(height: 20),
-            // Placeholder for illustration
+            SizedBox(height: 2.0 * SizeConfig.safeBlockVertical),
             Container(
-              padding: EdgeInsets.all(20),
+              padding: EdgeInsets.all(2.0 * SizeConfig.safeBlockHorizontal),
               decoration: BoxDecoration(
-                color: Color(0xFF4CAF50), // Container background color
-                borderRadius: BorderRadius.circular(16),
+                color: Color(0xFF4CAF50),
+                borderRadius:
+                    BorderRadius.circular(1.6 * SizeConfig.safeBlockHorizontal),
               ),
               child: Icon(
                 Icons.check_circle_outline,
-                size: 120,
+                size: 12.0 * SizeConfig.safeBlockHorizontal,
                 color: Colors.white,
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 2.0 * SizeConfig.safeBlockVertical),
             Padding(
-              padding: const EdgeInsets.all(36.0),
+              padding: EdgeInsets.all(3.6 * SizeConfig.safeBlockHorizontal),
               child: Text(
                 'Hope you will have a good time with Truffles.\nThank you for being a valued customer!',
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 1.8 * SizeConfig.safeBlockHorizontal,
                   color: Colors.white70,
                 ),
                 textAlign: TextAlign.center,
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 2.0 * SizeConfig.safeBlockVertical),
             ElevatedButton(
               onPressed: () {
-                // Logic to set a reminder or return to home screen
+                // Logic to set a reminder or return to the home screen
               },
               child: Text(
                 'Set a Reminder',
                 style: TextStyle(color: Colors.white),
               ),
               style: ElevatedButton.styleFrom(
-                primary: Color(0xFF2979FF), // Button color
-                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                primary: Color(0xFF2979FF),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 3.0 * SizeConfig.safeBlockHorizontal,
+                  vertical: 1.5 * SizeConfig.safeBlockVertical,
+                ),
               ),
             ),
           ],

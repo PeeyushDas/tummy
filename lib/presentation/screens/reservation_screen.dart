@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_pro/presentation/screens/confirmation_screen.dart';
+import 'package:test_pro/utils/size_config.dart';
 
 class ReservationPage extends StatefulWidget {
   @override
@@ -39,12 +40,13 @@ class _ReservationPageState extends State<ReservationPage> {
 
   Widget buildPromotionCard() {
     return Container(
-      height: 200,
-      width: 200,
-      padding: EdgeInsets.all(10),
+      height: 18.0 * SizeConfig.safeBlockVertical,
+      width: 100.0 * SizeConfig.safeBlockHorizontal,
+      padding: EdgeInsets.all(1.0 * SizeConfig.safeBlockHorizontal),
       decoration: BoxDecoration(
         color: Colors.blueGrey[50],
-        borderRadius: BorderRadius.circular(10),
+        borderRadius:
+            BorderRadius.circular(1.0 * SizeConfig.safeBlockHorizontal),
       ),
       child: Row(
         children: [
@@ -55,16 +57,17 @@ class _ReservationPageState extends State<ReservationPage> {
               style: TextStyle(
                 color: Colors.blueGrey,
                 fontWeight: FontWeight.bold,
-                fontSize: 16,
+                fontSize: 2.0 * SizeConfig.safeBlockHorizontal,
               ),
             ),
           ),
           Expanded(
             flex: 2,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius:
+                  BorderRadius.circular(1.0 * SizeConfig.safeBlockHorizontal),
               child: Image.network(
-                'https://th.bing.com/th/id/OLC.GYpIvRRG2xfSJw480x360?&dpr=1.3&pid=ImgDetMain', // Replace with your image asset
+                'https://th.bing.com/th/id/OLC.GYpIvRRG2xfSJw480x360?&dpr=1.3&pid=ImgDetMain',
                 fit: BoxFit.cover,
               ),
             ),
@@ -75,11 +78,10 @@ class _ReservationPageState extends State<ReservationPage> {
   }
 
   Widget buildDateTimePickers() {
-    // ... existing code for date and time pickers
     return Column(
       children: [
         ListTile(
-          tileColor: Color(0xFF1F1F1F), // Dark tile color
+          tileColor: Color(0xFF1F1F1F),
           title: Text("Select Date", style: TextStyle(color: Colors.white)),
           subtitle: Text("${selectedDate.toLocal()}".split(' ')[0],
               style: TextStyle(color: Colors.grey)),
@@ -87,7 +89,7 @@ class _ReservationPageState extends State<ReservationPage> {
           onTap: () => _selectDate(context),
         ),
         ListTile(
-          tileColor: Color(0xFF1F1F1F), // Dark tile color
+          tileColor: Color(0xFF1F1F1F),
           title: Text("Select Time", style: TextStyle(color: Colors.white)),
           subtitle: Text("${selectedTime.format(context)}",
               style: TextStyle(color: Colors.grey)),
@@ -99,10 +101,10 @@ class _ReservationPageState extends State<ReservationPage> {
   }
 
   Widget buildGuestNumberPicker() {
-    // ... existing code for guest number picker
     return Container(
-      color: Color(0xFF1F1F1F), // Dark container color
-      padding: EdgeInsets.symmetric(vertical: 10),
+      color: Color(0xFF1F1F1F),
+      padding:
+          EdgeInsets.symmetric(vertical: 1.0 * SizeConfig.safeBlockVertical),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -117,10 +119,13 @@ class _ReservationPageState extends State<ReservationPage> {
             },
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: EdgeInsets.symmetric(
+                horizontal: 1.6 * SizeConfig.safeBlockHorizontal),
             child: Text(
               '$numberOfGuests',
-              style: TextStyle(fontSize: 20, color: Colors.white),
+              style: TextStyle(
+                  fontSize: 2.0 * SizeConfig.safeBlockHorizontal,
+                  color: Colors.white),
             ),
           ),
           IconButton(
@@ -142,30 +147,30 @@ class _ReservationPageState extends State<ReservationPage> {
       appBar: AppBar(
         title: Text(
           'Table Reservation',
-          style: TextStyle(fontSize: 18),
+          style: TextStyle(fontSize: 1.8 * SizeConfig.safeBlockHorizontal),
         ),
         centerTitle: true,
-        // backgroundColor: Colors.tealAccent[700],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(1.6 * SizeConfig.safeBlockHorizontal),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             buildPromotionCard(),
-            SizedBox(height: 20),
+            SizedBox(height: 2.0 * SizeConfig.safeBlockVertical),
             buildDateTimePickers(),
-            SizedBox(height: 20),
+            SizedBox(height: 2.0 * SizeConfig.safeBlockVertical),
             Text(
               'Number of Guests',
-              style: TextStyle(fontSize: 16, color: Colors.white),
+              style: TextStyle(
+                  fontSize: 1.6 * SizeConfig.safeBlockHorizontal,
+                  color: Colors.white),
             ),
             buildGuestNumberPicker(),
-            SizedBox(height: 50),
+            SizedBox(height: 5.0 * SizeConfig.safeBlockVertical),
             ElevatedButton(
               onPressed: () {
-                // Handle reservation submission logic here
                 Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -179,9 +184,12 @@ class _ReservationPageState extends State<ReservationPage> {
                 style: TextStyle(color: Colors.white),
               ),
               style: ElevatedButton.styleFrom(
-                primary: Colors.deepPurple, // Primary color for button
-                padding: EdgeInsets.symmetric(vertical: 15),
-                textStyle: TextStyle(fontSize: 16, color: Colors.white),
+                primary: Colors.deepPurple,
+                padding: EdgeInsets.symmetric(
+                    vertical: 1.5 * SizeConfig.safeBlockVertical),
+                textStyle: TextStyle(
+                    fontSize: 1.6 * SizeConfig.safeBlockHorizontal,
+                    color: Colors.white),
               ),
             ),
           ],
