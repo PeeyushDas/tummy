@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:test_pro/Components/profile_icon.dart';
 import 'package:test_pro/Components/scaffold.dart';
 import 'package:test_pro/utils/size_config.dart';
 
