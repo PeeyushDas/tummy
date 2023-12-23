@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:test_pro/utils/size_config.dart';
+
 
 class ReservationConfirmedPage extends StatelessWidget {
   @override
@@ -7,6 +9,7 @@ class ReservationConfirmedPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+
         title: Text('Confirmation',
             style: TextStyle(
                 color: Colors.white,
@@ -15,15 +18,18 @@ class ReservationConfirmedPage extends StatelessWidget {
       ),
       body: Container(
         color: Color(0xFF121212),
+
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
+
               padding: EdgeInsets.all(2.0 * SizeConfig.safeBlockHorizontal),
               child: Text(
                 'Sweet Weekend!\nTruffles, Well Done!',
                 style: TextStyle(
                   fontSize: 2.4 * SizeConfig.safeBlockHorizontal,
+
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                   height: 1.5, // Line height
@@ -31,6 +37,7 @@ class ReservationConfirmedPage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
             ),
+
             SizedBox(height: 2.0 * SizeConfig.safeBlockVertical),
             Container(
               padding: EdgeInsets.all(2.0 * SizeConfig.safeBlockHorizontal),
@@ -52,11 +59,13 @@ class ReservationConfirmedPage extends StatelessWidget {
                 'Hope you will have a good time with Truffles.\nThank you for being a valued customer!',
                 style: TextStyle(
                   fontSize: 1.8 * SizeConfig.safeBlockHorizontal,
+
                   color: Colors.white70,
                 ),
                 textAlign: TextAlign.center,
               ),
             ),
+
             SizedBox(height: 2.0 * SizeConfig.safeBlockVertical),
             ElevatedButton(
               onPressed: () {
@@ -72,6 +81,7 @@ class ReservationConfirmedPage extends StatelessWidget {
                   horizontal: 3.0 * SizeConfig.safeBlockHorizontal,
                   vertical: 1.5 * SizeConfig.safeBlockVertical,
                 ),
+
               ),
             ),
           ],
