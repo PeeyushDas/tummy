@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_pro/Components/scaffold.dart';
 import 'package:test_pro/utils/size_config.dart';
 
 class SubscriptionScreen extends StatefulWidget {
@@ -18,22 +19,9 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
 
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        leading: const BackButton(
-          color: Colors.white,
-        ),
-        title: Row(
-          children: [
-            Icon(Icons.star, color: Colors.red),
-            SizedBox(width: SizeConfig.safeBlockHorizontal * 2),
-            Text("Become a member :)", style: TextStyle(color: Colors.white)),
-          ],
-        ),
-      ),
-      body: Stack(
+    return buildScaffold(
+      text: "Become a Member :)",
+      widget: Stack(
         children: [
           Expanded(
             child: PageView.builder(
@@ -46,7 +34,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
               },
               itemBuilder: (BuildContext context, int index) {
                 return Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     gradient: LinearGradient(
                       end: Alignment.topCenter,
                       begin: Alignment.bottomCenter,
@@ -183,14 +171,6 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                                 onPressed: () {
                                   // Handle button press
                                 },
-                                child: Text(
-                                  'Buy Subscription',
-                                  style: TextStyle(
-                                    fontSize:
-                                        SizeConfig.safeBlockHorizontal * 4,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
                                 style: ButtonStyle(
                                   padding: MaterialStateProperty.all(
                                       EdgeInsets.symmetric(
@@ -212,6 +192,14 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                                   ),
                                   elevation: MaterialStateProperty.all(
                                       SizeConfig.safeBlockHorizontal * 2),
+                                ),
+                                child: Text(
+                                  'Buy Subscription',
+                                  style: TextStyle(
+                                    fontSize:
+                                        SizeConfig.safeBlockHorizontal * 4,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ),

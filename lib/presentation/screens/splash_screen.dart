@@ -70,7 +70,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
               child: SlideTransition(
                 position: _offsetAnimation,
                 child: Image.asset(
-                  'assets/images/logo.png',
+                  'assets/images/logoB.png',
                   width: logoWidth * 0.70,
                   height: logoWidth * 0.70, // Maintain the same aspect ratio
                   fit: BoxFit.cover,

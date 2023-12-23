@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test_pro/presentation/screens/home_page.dart';
 import 'package:test_pro/presentation/screens/splash_screen.dart';
-import 'package:test_pro/presentation/screens/super_charge.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,13 +20,12 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'Inner Circle',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color.fromARGB(255, 145, 46, 19),
+        ),
         useMaterial3: true,
       ),
-      home: Splash(),
-
-
+      home: const Splash(),
     );
   }
 }
-

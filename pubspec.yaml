@@ -62,6 +62,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/logo.png
+    - assets/images/logoB.png
     - assets/images/Disco_Ball.png
     - assets/images/Booking.png
     - assets/images/Restaurant_Building.png

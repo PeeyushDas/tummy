@@ -7,28 +7,30 @@ class SuperChargeScreen extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Color(0XFF212226),
-        leading: BackButton(
+        backgroundColor: const Color(0XFF212226),
+        leading: const BackButton(
           color: Colors.white,
         ),
         title: Row(
           children: [
-            Icon(Icons.flash_on, color: Colors.red),
+            const Icon(Icons.flash_on, color: Colors.red),
             SizedBox(width: SizeConfig.safeBlockHorizontal * 2),
-            Text('Super Charges', style: TextStyle(color: Colors.red)),
+            const Text('Super Charges', style: TextStyle(color: Colors.red)),
           ],
         ),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.home, color: Colors.white),
-            onPressed: () {
-              // Handle home button press
-            },
+          CircleAvatar(
+            radius: 18,
+            backgroundColor: Colors.white,
+            backgroundImage: const AssetImage('assets/images/person.jpg'),
+          ),
+          SizedBox(
+            width: SizeConfig.blockSizeHorizontal * 3.5,
           ),
         ],
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             end: Alignment.topCenter,
             begin: Alignment.bottomCenter,
@@ -55,17 +57,17 @@ class SuperChargeScreen extends StatelessWidget {
             return Card(
               child: ListTile(
                 visualDensity: VisualDensity.comfortable,
-                leading: CircleAvatar(
+                leading: const CircleAvatar(
                   backgroundImage: AssetImage(
                       'assets/images/logo.png'), // Replace with the actual image path
                 ),
-                title: Text('Food Item'),
-                subtitle: Text('Food Description'),
+                title: const Text('Food Item'),
+                subtitle: const Text('Food Description'),
                 trailing: CircleAvatar(
                   backgroundColor: Colors.transparent,
                   child: Text(
                     '${2 * index + 1}',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.red,
                     ),
                   ),

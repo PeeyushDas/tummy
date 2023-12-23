@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:test_pro/presentation/review.dart';
 import 'package:test_pro/presentation/screens/restaurants_screen.dart';
-import 'package:test_pro/presentation/screens/super_charge.dart';
+import 'package:test_pro/Components/profile_icon.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -23,6 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
               'assets/images/logo.png',
               width: 1,
             ),
+            actions: getActions(),
             pinned: true, // Keeps the AppBar at the top
             // The initial height including the flexible space
             flexibleSpace: FlexibleSpaceBar(
@@ -62,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => SuperChargeScreen(),
+                          builder: (context) => ReviewPage(),
                         ),
                       );
                     },

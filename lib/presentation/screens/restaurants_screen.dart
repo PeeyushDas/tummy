@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:test_pro/Components/scaffold.dart';
 import 'package:test_pro/presentation/screens/exclusive_dine.dart';
-import 'package:test_pro/presentation/screens/restaurant.dart';
 import 'package:test_pro/utils/size_config.dart';
 
 class RestaurantPage extends StatelessWidget {
@@ -10,139 +10,120 @@ class RestaurantPage extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
 
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.arrow_back_ios_outlined, color: Colors.white),
-        ),
-        title: Text('Restaurants', style: TextStyle(color: Colors.white)),
-        centerTitle: true,
-        backgroundColor: Color(0xff212226),
-      ),
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [Color(0xff212226), Color(0xff16151B), Color(0xffF55223)],
-          ),
-        ),
-        child: Padding(
-          padding: EdgeInsets.all(SizeConfig.safeBlockHorizontal * 2),
-          child: Column(
-            children: [
-              Container(
-                height: SizeConfig.safeBlockVertical * 7,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    ConstrainedBox(
-                      constraints: BoxConstraints(
-                        maxWidth: SizeConfig.safeBlockHorizontal * 25,
-                        minWidth: SizeConfig.safeBlockHorizontal * 12.5,
-                        maxHeight: SizeConfig.safeBlockVertical * 9,
-                        minHeight: SizeConfig.safeBlockVertical * 5,
+    return buildScaffold(
+      text: "Restaurants",
+      widget: Padding(
+        padding: EdgeInsets.all(SizeConfig.safeBlockHorizontal * 2),
+        child: Column(
+          children: [
+            Container(
+              height: SizeConfig.safeBlockVertical * 7,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxWidth: SizeConfig.safeBlockHorizontal * 25,
+                      minWidth: SizeConfig.safeBlockHorizontal * 12.5,
+                      maxHeight: SizeConfig.safeBlockVertical * 9,
+                      minHeight: SizeConfig.safeBlockVertical * 5,
+                    ),
+                    child: Container(
+                      padding:
+                          EdgeInsets.all(SizeConfig.safeBlockHorizontal * 2),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                            SizeConfig.safeBlockHorizontal * 12.5),
+                        color: const Color(0xff4b4b53),
                       ),
-                      child: Container(
-                        padding:
-                            EdgeInsets.all(SizeConfig.safeBlockHorizontal * 2),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                              SizeConfig.safeBlockHorizontal * 12.5),
-                          color: Color(0xff4b4b53),
-                        ),
-                        child: Center(
-                          child: Text(
-                            'Suggestions',
-                            style: TextStyle(color: Colors.white),
-                          ),
+                      child: const Center(
+                        child: Text(
+                          'Suggestions',
+                          style: TextStyle(color: Colors.white),
                         ),
                       ),
                     ),
-                    SizedBox(width: SizeConfig.safeBlockHorizontal * 2),
-                    ConstrainedBox(
-                      constraints: BoxConstraints(
-                        maxWidth: SizeConfig.safeBlockHorizontal * 25,
-                        minWidth: SizeConfig.safeBlockHorizontal * 12.5,
-                        maxHeight: SizeConfig.safeBlockVertical * 9,
-                        minHeight: SizeConfig.safeBlockVertical * 5,
+                  ),
+                  SizedBox(width: SizeConfig.safeBlockHorizontal * 2),
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxWidth: SizeConfig.safeBlockHorizontal * 25,
+                      minWidth: SizeConfig.safeBlockHorizontal * 12.5,
+                      maxHeight: SizeConfig.safeBlockVertical * 9,
+                      minHeight: SizeConfig.safeBlockVertical * 5,
+                    ),
+                    child: Container(
+                      padding:
+                          EdgeInsets.all(SizeConfig.safeBlockHorizontal * 2),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                            SizeConfig.safeBlockHorizontal * 12.5),
+                        color: const Color(0xff4b4b53),
                       ),
-                      child: Container(
-                        padding:
-                            EdgeInsets.all(SizeConfig.safeBlockHorizontal * 2),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                              SizeConfig.safeBlockHorizontal * 12.5),
-                          color: Color(0xff4b4b53),
-                        ),
-                        child: Center(
-                          child: Text(
-                            'Suggestions',
-                            style: TextStyle(color: Colors.white),
-                          ),
+                      child: const Center(
+                        child: Text(
+                          'Suggestions',
+                          style: TextStyle(color: Colors.white),
                         ),
                       ),
                     ),
-                    SizedBox(width: SizeConfig.safeBlockHorizontal * 2),
-                    ConstrainedBox(
-                      constraints: BoxConstraints(
-                        maxWidth: SizeConfig.safeBlockHorizontal * 25,
-                        minWidth: SizeConfig.safeBlockHorizontal * 12.5,
-                        maxHeight: SizeConfig.safeBlockVertical * 9,
-                        minHeight: SizeConfig.safeBlockVertical * 5,
+                  ),
+                  SizedBox(width: SizeConfig.safeBlockHorizontal * 2),
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxWidth: SizeConfig.safeBlockHorizontal * 25,
+                      minWidth: SizeConfig.safeBlockHorizontal * 12.5,
+                      maxHeight: SizeConfig.safeBlockVertical * 9,
+                      minHeight: SizeConfig.safeBlockVertical * 5,
+                    ),
+                    child: Container(
+                      padding:
+                          EdgeInsets.all(SizeConfig.safeBlockHorizontal * 2),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                            SizeConfig.safeBlockHorizontal * 12.5),
+                        color: const Color(0xff4b4b53),
                       ),
-                      child: Container(
-                        padding:
-                            EdgeInsets.all(SizeConfig.safeBlockHorizontal * 2),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                              SizeConfig.safeBlockHorizontal * 12.5),
-                          color: Color(0xff4b4b53),
-                        ),
-                        child: Center(
-                          child: Text(
-                            'Suggestions',
-                            style: TextStyle(color: Colors.white),
-                          ),
+                      child: const Center(
+                        child: Text(
+                          'Suggestions',
+                          style: TextStyle(color: Colors.white),
                         ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              SizedBox(height: SizeConfig.safeBlockVertical * 2),
-              Expanded(
-                child: ListView(
-                  children: [
-                    Row(
-                      children: [
-                        RestaurantCard(),
-                        SizedBox(width: SizeConfig.safeBlockHorizontal * 2),
-                        RestaurantCard(),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        RestaurantCard(),
-                        SizedBox(width: SizeConfig.safeBlockHorizontal * 2),
-                        RestaurantCard(),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        RestaurantCard(),
-                        SizedBox(width: SizeConfig.safeBlockHorizontal * 2),
-                        RestaurantCard(),
-                      ],
-                    ),
-                  ],
-                ),
+            ),
+            SizedBox(height: SizeConfig.safeBlockVertical * 2),
+            Expanded(
+              child: ListView(
+                children: [
+                  Row(
+                    children: [
+                      RestaurantCard(),
+                      SizedBox(width: SizeConfig.safeBlockHorizontal * 2),
+                      RestaurantCard(),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      RestaurantCard(),
+                      SizedBox(width: SizeConfig.safeBlockHorizontal * 2),
+                      RestaurantCard(),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      RestaurantCard(),
+                      SizedBox(width: SizeConfig.safeBlockHorizontal * 2),
+                      RestaurantCard(),
+                    ],
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -185,7 +166,7 @@ class RestaurantCard extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(
                     horizontal: SizeConfig.safeBlockHorizontal * 2),
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text('Cuisine'), // Replace with actual cuisine type
