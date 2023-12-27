@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:test_pro/Components/scaffold.dart';
 import 'package:test_pro/utils/size_config.dart';
 
 class ReservationConfirmedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('Confirmation',
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 2.0 * SizeConfig.safeBlockHorizontal)),
-        backgroundColor: Color(0xFF1A237E),
-      ),
-      body: Container(
+    return buildScaffold(
+      context: context,
+      text: 'Confirmation',
+      widget: Container(
         color: Color(0xFF121212),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

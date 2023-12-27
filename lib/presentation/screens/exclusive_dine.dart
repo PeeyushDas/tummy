@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:test_pro/Components/scaffold.dart';
-import 'package:test_pro/presentation/review.dart';
+import 'package:test_pro/presentation/screens/dinein_next.dart';
+
 import 'package:test_pro/presentation/screens/exclusives.dart';
 import 'package:test_pro/utils/size_config.dart';
 
@@ -11,6 +12,7 @@ class ExclusiveDineScreen extends StatelessWidget {
     SizeConfig().init(context);
 
     return buildScaffold(
+      context: context,
       text: "Truffles",
       widget: SingleChildScrollView(
         child: Padding(
@@ -27,8 +29,8 @@ class ExclusiveDineScreen extends StatelessWidget {
                   borderRadius: BorderRadius.all(
                       Radius.circular(SizeConfig.safeBlockHorizontal * 7.5)),
                   border: Border.all(
-                    color: Colors.red,
-                    width: 2,
+                    color: Colors.white.withOpacity(0.9),
+                    width: 0.5,
                   ),
                 ),
                 child: Image.asset('assets/images/logo.png'),
@@ -97,7 +99,7 @@ class ExclusiveDineScreen extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                        left: SizeConfig.safeBlockHorizontal * 10),
+                        left: SizeConfig.safeBlockHorizontal * 15),
                     child: Text(
                       'Ratings: 4.5',
                       style: TextStyle(
@@ -108,9 +110,9 @@ class ExclusiveDineScreen extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                        left: SizeConfig.safeBlockHorizontal * 2),
+                        left: SizeConfig.safeBlockHorizontal * 10),
                     child: Text(
-                      ',  Review: 3567',
+                      'Review: 3567',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: SizeConfig.safeBlockHorizontal * 3.5,
@@ -173,7 +175,7 @@ class ExclusiveDineScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ReviewPage(),
+                              builder: (context) => DineInNextScreen(),
                             ),
                           );
                         },
@@ -212,8 +214,8 @@ class ExclusiveDineScreen extends StatelessWidget {
                     width: SizeConfig.safeBlockHorizontal * 40,
                     decoration: BoxDecoration(
                       border: Border.all(
-                        color: Colors.red,
-                        width: 2,
+                        color: Colors.white.withOpacity(0.9),
+                        width: 0.5,
                       ),
                       borderRadius: BorderRadius.circular(
                           SizeConfig.safeBlockHorizontal * 7.5),
@@ -221,14 +223,14 @@ class ExclusiveDineScreen extends StatelessWidget {
                       shape: BoxShape.rectangle,
                     ),
                   ),
-                  SizedBox(width: SizeConfig.safeBlockHorizontal * 5),
+                  SizedBox(width: SizeConfig.safeBlockHorizontal * 3),
                   Column(
                     children: [
                       Container(
                         decoration: BoxDecoration(
                           border: Border.all(
-                            color: Colors.red,
-                            width: 2,
+                            color: Colors.white.withOpacity(0.9),
+                            width: 0.5,
                           ),
                           borderRadius: BorderRadius.circular(
                               SizeConfig.safeBlockHorizontal * 7.5),
@@ -242,8 +244,8 @@ class ExclusiveDineScreen extends StatelessWidget {
                       Container(
                         decoration: BoxDecoration(
                           border: Border.all(
-                            color: Colors.red,
-                            width: 2,
+                            color: Colors.white.withOpacity(0.9),
+                            width: 0.5,
                           ),
                           borderRadius: BorderRadius.circular(
                               SizeConfig.safeBlockHorizontal * 7.5),

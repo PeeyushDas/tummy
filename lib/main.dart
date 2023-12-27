@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:test_pro/presentation/screens/splash_screen.dart';
+import 'package:test_pro/utils/theme/dark_theme.dart';
+import 'package:test_pro/utils/theme/light_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,12 +21,8 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Inner Circle',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 145, 46, 19),
-        ),
-        useMaterial3: true,
-      ),
+      theme: lightTheme,
+      darkTheme: darkTheme,
       home: const Splash(),
     );
   }

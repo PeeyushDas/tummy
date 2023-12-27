@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:test_pro/Components/container.dart';
+import 'package:test_pro/Components/custom_button.dart';
+import 'package:test_pro/Components/custom_container.dart';
+import 'package:test_pro/Components/scaffold.dart';
+import 'package:test_pro/presentation/screens/events.dart';
+import 'package:test_pro/presentation/screens/exclusive_dine.dart';
 import 'package:test_pro/presentation/screens/review.dart';
 import 'package:test_pro/presentation/screens/restaurants_screen.dart';
 import 'package:test_pro/Components/profile_icon.dart';
+import 'package:test_pro/utils/size_config.dart';
+import 'package:test_pro/utils/theme/color_theme.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -13,472 +21,263 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int cIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            leading: Image.asset(
-              'assets/images/logo.png',
-              width: 1,
-            ),
-            actions: getActions(),
-            pinned: true, // Keeps the AppBar at the top
-            // The initial height including the flexible space
-            flexibleSpace: FlexibleSpaceBar(
-              title: Text(
-                widget.title,
-                style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold),
+      extendBodyBehindAppBar: true,
+      extendBody: true,
+      backgroundColor: Theme.of(context).colorScheme.background,
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: Text("InnerCircle", style: const TextStyle(color: Colors.white)),
+        leading: CircleAvatar(
+          radius: 0,
+          backgroundColor: Colors.black,
+          backgroundImage: AssetImage('assets/images/logo.png'),
+        ),
+        actions: getActions(),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(5 * SizeConfig.safeBlockHorizontal),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 10 * SizeConfig.blockSizeVertical,
               ),
-            ),
-            backgroundColor: Colors.black,
-          ),
-          SliverToBoxAdapter(
-            child: Container(
-              decoration: const BoxDecoration(
-                // BoxDecoration configuration...
-
-                gradient: LinearGradient(
-                  end: Alignment.topCenter,
-                  begin: Alignment.bottomCenter,
-                  colors: [
-                    Color.fromARGB(255, 145, 46, 19),
-                    Color(0XFF16151B),
-                    Color(0XFF212226),
-                  ],
+              // Your ListView's children wrapped in a Column
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ExclusiveDineScreen(),
+                    ),
+                  );
+                },
+                child: Container(
+                  height: 20 * SizeConfig.blockSizeVertical,
+                  width: 800 * SizeConfig.blockSizeHorizontal,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.1),
+                    borderRadius: BorderRadius.all(
+                        Radius.circular(SizeConfig.safeBlockHorizontal * 7.5)),
+                    border: Border.all(
+                      color: Colors.white.withOpacity(0.5),
+                      width: 0.5,
+                    ),
+                  ),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: SizeConfig.blockSizeVertical * 4,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Wallet Balance',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18),
+                          ),
+                          SizedBox(
+                            width: SizeConfig.blockSizeHorizontal * 40,
+                          ),
+                          Text(
+                            '\$211',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            '\$CIN Balance',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          SizedBox(
+                            width: SizeConfig.blockSizeHorizontal * 42,
+                          ),
+                          Text(
+                            '6400 \$CIN',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: SizeConfig.safeBlockVertical * 5,
+                      ),
+                      Text(
+                        'Get monthly subsciption to earn 2x \$CIN',
+                        style: TextStyle(fontSize: 12, color: Colors.white),
+                      )
+                    ],
+                  ),
                 ),
               ),
-              child: Column(
-                children: [
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  // Your ListView's children wrapped in a Column
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ReviewPage(),
-                        ),
-                      );
-                    },
-                    child: Container(
-                      height: 142,
-                      width: 355,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.red,
-                          width: 2,
-                        ),
-                        gradient: const LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: <Color>[
-                            Color.fromARGB(255, 73, 33, 9),
-                            Color.fromARGB(255, 83, 35, 22),
-                            Color.fromARGB(255, 119, 40, 18),
-                            Color.fromARGB(255, 87, 31, 16),
-                            Color.fromARGB(255, 73, 33, 9),
-                          ],
-                        ),
-                        // borderRadius: BorderRadius.circular(40),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          'Coming Soon',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                          ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Container(
+                    width: SizeConfig.safeBlockHorizontal * 44,
+                    height: SizeConfig.safeBlockVertical * 7,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(
+                          SizeConfig.safeBlockHorizontal * 7.5),
+                      color: Colors.red,
+                      shape: BoxShape.rectangle,
+                    ),
+                    child: ElevatedButton.icon(
+                      onPressed: () {},
+                      icon: const Icon(Icons.add),
+                      label: const Text('Add Funds'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color.fromARGB(255, 195, 49, 8),
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                              SizeConfig.safeBlockHorizontal * 7.5),
                         ),
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Container(
-                        decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            colors: [
-                              Color.fromARGB(255, 119, 40, 18),
-                              Color.fromARGB(255, 150, 68, 16),
-                              Color.fromARGB(255, 113, 49, 9),
-                              Color.fromARGB(255, 119, 40, 18),
-                              Color.fromARGB(255, 119, 40, 18),
-                            ],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
-                          borderRadius: BorderRadius.circular(
-                              30), // Adjust the radius here
-                        ),
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.transparent,
-                            shadowColor: Colors.transparent,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                          ),
-                          onPressed: () {
-                            // Add your button tap functionality here
-                          },
-                          child: const Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 10),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                Icon(Icons.add, color: Colors.white), // Icon
-                                SizedBox(
-                                    width: 5), // Space between icon and text
-                                Text(
-                                  "Add Fund",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            colors: [
-                              Color.fromARGB(255, 119, 40, 18),
-                              Color.fromARGB(255, 150, 68, 16),
-                              Color.fromARGB(255, 113, 49, 9),
-                              Color.fromARGB(255, 119, 40, 18),
-                              Color.fromARGB(255, 119, 40, 18),
-                            ],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
-                          borderRadius: BorderRadius.circular(
-                              30), // Adjust the radius here
-                        ),
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.transparent,
-                            shadowColor: Colors.transparent,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                          ),
-                          onPressed: () {
-                            // Add your button tap functionality here
-                          },
-                          child: const Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 10),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                Icon(Icons.add, color: Colors.white), // Icon
-                                SizedBox(
-                                    width: 5), // Space between icon and text
-                                Text(
-                                  "Add Fund",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Container(
-                        height: 128,
-                        width: 170,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          // borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Stack(
-                          alignment: Alignment.center,
-                          children: <Widget>[
-                            ClipRRect(
-                                child: Image.network(
-                                    'https://th.bing.com/th?id=OIP.MfhIfzrC6x6T1-szQkjtCgHaEo&w=316&h=197&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2')),
-                            Align(
-                              alignment: const Alignment(0, 1.1),
-                              child: TextButton(
-                                style: TextButton.styleFrom(
-                                  fixedSize: const Size(200, 30),
-                                  backgroundColor: const Color.fromARGB(
-                                      255, 161, 3, 0), // foreground
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
-                                ),
-                                onPressed: () {},
-                                child: const Text(
-                                  'Check Eligibility',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Container(
-                        height: 128,
-                        width: 170,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Stack(
-                          alignment: Alignment.center,
-                          children: <Widget>[
-                            Image.asset(
-                              'assets/images/logo.png',
-                            ),
-                            Align(
-                              alignment: const Alignment(0, 1.1),
-                              child: TextButton(
-                                style: TextButton.styleFrom(
-                                  fixedSize: const Size(200, 30),
-                                  backgroundColor: const Color.fromARGB(
-                                      255, 161, 3, 0), // foreground
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
-                                ),
-                                onPressed: () {},
-                                child: const Text(
-                                  'Check Eligibility',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 20,
+                  SizedBox(
+                    width: SizeConfig.safeBlockHorizontal * 2,
                   ),
                   Container(
-                    padding: EdgeInsets.all(15),
-                    height: 81,
-                    width: 355,
+                    width: SizeConfig.safeBlockHorizontal * 44,
+                    height: SizeConfig.safeBlockVertical * 7,
                     decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.centerRight,
-                        colors: <Color>[
-                          Color.fromARGB(255, 50, 23, 15),
-                          Color.fromARGB(255, 65, 34, 15),
-                          Color.fromARGB(255, 44, 26, 15),
-                          Color.fromARGB(255, 61, 22, 11),
-                          Color.fromARGB(255, 67, 32, 23),
-                        ],
-                      ),
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(
+                          SizeConfig.safeBlockHorizontal * 7.5),
+                      color: Colors.red,
+                      shape: BoxShape.rectangle,
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: const Text(
+                        'Mileston Rewards',
+                        style: TextStyle(),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color.fromARGB(255, 195, 49, 8),
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                              SizeConfig.safeBlockHorizontal * 7.5),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  createContainer(
+                    context: context,
+                    height: SizeConfig.blockSizeVertical * 16,
+                    width: SizeConfig.safeBlockHorizontal * 44,
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: <Widget>[
                         Image.asset(
-                          'assets/images/Disco_Ball.png',
+                          'assets/images/logo.png',
                         ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        const Text(
-                          'Club',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )
+                        Align(
+                            alignment: const Alignment(0, 0.8),
+                            child: createGlassbutton(
+                                child: Text("Check Eligibility"),
+                                width: SizeConfig.blockSizeHorizontal * 40,
+                                height: SizeConfig.blockSizeVertical * 5)),
                       ],
                     ),
                   ),
-                  const SizedBox(
-                    height: 20,
+                  SizedBox(
+                    width: SizeConfig.safeBlockHorizontal * 2,
                   ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => RestaurantPage()));
-                    },
-                    child: Container(
-                      padding: EdgeInsets.all(12),
-                      height: 81,
-                      width: 355,
-                      decoration: BoxDecoration(
-                        gradient: const LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: <Color>[
-                            Color.fromARGB(255, 50, 23, 15),
-                            Color.fromARGB(255, 65, 34, 15),
-                            Color.fromARGB(255, 44, 26, 15),
-                            Color.fromARGB(255, 61, 22, 11),
-                            Color.fromARGB(255, 67, 32, 23),
-                          ],
-                        ),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Image.asset(
-                            'assets/images/Restaurant_Building.png',
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          const Text(
-                            'Restaurants',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(12),
-                    height: 81,
-                    width: 355,
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        end: Alignment.centerLeft,
-                        begin: Alignment.centerRight,
-                        colors: <Color>[
-                          Color.fromARGB(255, 50, 23, 15),
-                          Color.fromARGB(255, 65, 34, 15),
-                          Color.fromARGB(255, 44, 26, 15),
-                          Color.fromARGB(255, 61, 22, 11),
-                          Color.fromARGB(255, 67, 32, 23),
-                        ],
-                      ),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
+                  createContainer(
+                    context: context,
+                    height: SizeConfig.blockSizeVertical * 16,
+                    width: SizeConfig.safeBlockHorizontal * 44,
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: <Widget>[
                         Image.asset(
-                          'assets/images/Booking.png',
+                          'assets/images/logo.png',
                         ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        const Text(
-                          'Bookings',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(12),
-                    height: 81,
-                    width: 355,
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        end: Alignment.topCenter,
-                        begin: Alignment.bottomLeft,
-                        colors: <Color>[
-                          Color.fromARGB(255, 50, 23, 15),
-                          Color.fromARGB(255, 65, 34, 15),
-                          Color.fromARGB(255, 44, 26, 15),
-                          Color.fromARGB(255, 61, 22, 11),
-                          Color.fromARGB(255, 67, 32, 23),
-                        ],
-                      ),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          'assets/images/Drinks.png',
-                          width: 50,
-                          height: 50,
-                          color: Colors.deepOrangeAccent,
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        const Text(
-                          'Events',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )
+                        Align(
+                            alignment: const Alignment(0, 0.8),
+                            child: createGlassbutton(
+                                child: Text("Check Eligibility"),
+                                width: SizeConfig.blockSizeHorizontal * 40,
+                                height: SizeConfig.blockSizeVertical * 5)),
                       ],
                     ),
                   ),
                 ],
               ),
-            ),
+              SizedBox(
+                height: SizeConfig.blockSizeVertical * 3,
+              ),
+              createGlassContainer(
+                context: context,
+                onTappedScreen: RestaurantPage(),
+                text: 'Restaurant',
+                height: SizeConfig.blockSizeVertical * 9.5,
+                width: SizeConfig.safeBlockHorizontal * 90,
+              ),
+              SizedBox(
+                height: SizeConfig.blockSizeVertical * 1.75,
+              ),
+              createGlassContainer(
+                context: context,
+                onTappedScreen: ReviewPage(),
+                text: 'Clubs',
+                height: SizeConfig.blockSizeVertical * 9.5,
+                width: SizeConfig.safeBlockHorizontal * 90,
+              ),
+              SizedBox(
+                height: SizeConfig.blockSizeVertical * 1.75,
+              ),
+              createGlassContainer(
+                onTappedScreen: ExclusiveDineScreen(),
+                context: context,
+                text: 'Bookings',
+                height: SizeConfig.blockSizeVertical * 9.5,
+                width: SizeConfig.safeBlockHorizontal * 90,
+              ),
+              SizedBox(
+                height: SizeConfig.blockSizeVertical * 1.75,
+              ),
+              createGlassContainer(
+                onTappedScreen: EventsScreen(),
+                context: context,
+                text: 'Events',
+                height: SizeConfig.blockSizeVertical * 9.5,
+                width: SizeConfig.safeBlockHorizontal * 90,
+              ),
+              SizedBox(
+                height: SizeConfig.blockSizeVertical * 1.75,
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

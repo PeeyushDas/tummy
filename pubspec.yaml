@@ -30,6 +30,7 @@ environment:
 dependencies:
   flutter_rating_bar: ^4.0.0
   intl: ^0.19.0
+
   flutter:
     sdk: flutter
 
@@ -70,6 +71,11 @@ flutter:
     - assets/images/Drinks.png
     - assets/images/Countdown.png
     - assets/images/person.jpg
+    - assets/images/Table_booking.png
+    - assets/images/booking_s.png
+    - assets/images/super.png
+    - assets/images/subscription.png
+    - assets/images/ratings.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

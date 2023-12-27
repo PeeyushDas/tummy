@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:test_pro/Components/container.dart';
 import 'package:test_pro/Components/scaffold.dart';
 import 'package:test_pro/utils/size_config.dart';
+import 'package:test_pro/utils/theme/color_theme.dart';
 
 class SubscriptionScreen extends StatefulWidget {
   const SubscriptionScreen({super.key});
@@ -20,6 +22,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
     SizeConfig().init(context);
 
     return buildScaffold(
+      context: context,
       text: "Become a Member :)",
       widget: Stack(
         children: [
@@ -33,181 +36,153 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                 });
               },
               itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      end: Alignment.topCenter,
-                      begin: Alignment.bottomCenter,
-                      colors: [
-                        Color.fromARGB(255, 145, 46, 19),
-                        Color(0XFF16151B),
-                        Color(0XFF212226),
-                      ],
-                    ),
-                  ),
-                  child: Column(
-                    children: [
-                      SizedBox(height: SizeConfig.safeBlockVertical * 12),
-                      Container(
-                        height: SizeConfig.safeBlockVertical * 76,
-                        width: SizeConfig.safeBlockHorizontal * 86,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(
-                              SizeConfig.safeBlockHorizontal * 3)),
-                          border: Border.all(
-                            color: Colors.red,
-                            width: 2,
-                          ),
-                        ),
-                        margin: EdgeInsets.only(
-                            top: SizeConfig.safeBlockVertical * 4),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              height: SizeConfig.safeBlockVertical * 34,
-                              width: SizeConfig.safeBlockHorizontal * 86,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.all(Radius.circular(
-                                    SizeConfig.safeBlockHorizontal * 3)),
-                                border: Border.all(
-                                  color: Colors.red,
-                                  width: 2,
-                                ),
-                              ),
+                return Column(
+                  children: [
+                    SizedBox(height: SizeConfig.safeBlockVertical * 12),
+                    createContainer(
+                      context: context,
+                      height: SizeConfig.safeBlockVertical * 76,
+                      width: SizeConfig.safeBlockHorizontal * 86,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: SizeConfig.safeBlockVertical * 1.5),
+                          Center(
+                            child: createContainer(
+                              context: context,
+                              height: SizeConfig.safeBlockVertical * 30,
+                              width: SizeConfig.safeBlockHorizontal * 80,
                               child: Image.asset(
                                 'assets/images/logo.png',
                               ),
                             ),
-                            SizedBox(height: SizeConfig.safeBlockVertical * 2),
-                            Padding(
+                          ),
+                          SizedBox(height: SizeConfig.safeBlockVertical * 2),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(
+                                SizeConfig.safeBlockHorizontal * 3,
+                                0,
+                                0,
+                                SizeConfig.safeBlockVertical * 1),
+                            child: Text("TEXT",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: SizeConfig.safeBlockHorizontal * 6,
+                                  fontWeight: FontWeight.bold,
+                                )),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(
+                                SizeConfig.safeBlockHorizontal * 3,
+                                0,
+                                0,
+                                SizeConfig.safeBlockVertical * 1),
+                            child: Text("TEXT TEXT TEXT TEXT TEXT",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize:
+                                      SizeConfig.safeBlockHorizontal * 3.5,
+                                )),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(
+                                SizeConfig.safeBlockHorizontal * 3,
+                                0,
+                                0,
+                                SizeConfig.safeBlockVertical * 1.5),
+                            child:
+                                Text("TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize:
+                                          SizeConfig.safeBlockHorizontal * 3.5,
+                                    )),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(
+                                SizeConfig.safeBlockHorizontal * 3,
+                                0,
+                                0,
+                                SizeConfig.safeBlockVertical * 1),
+                            child: Text("TEXT TEXT TEXT TEXT",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize:
+                                      SizeConfig.safeBlockHorizontal * 3.5,
+                                )),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(
+                                SizeConfig.safeBlockHorizontal * 3,
+                                0,
+                                0,
+                                SizeConfig.safeBlockVertical * 1),
+                            child: Text("TEXT TEXT TEXT TEXT TEXT TEXT ",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize:
+                                      SizeConfig.safeBlockHorizontal * 3.5,
+                                )),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(
+                                SizeConfig.safeBlockHorizontal * 3,
+                                0,
+                                0,
+                                SizeConfig.safeBlockVertical * 1),
+                            child: Text(
+                                "TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize:
+                                      SizeConfig.safeBlockHorizontal * 3.5,
+                                )),
+                          ),
+                          Center(
+                            child: Padding(
                               padding: EdgeInsets.fromLTRB(
-                                  SizeConfig.safeBlockHorizontal * 2,
-                                  0,
-                                  0,
-                                  SizeConfig.safeBlockVertical * 1),
-                              child: Text("TEXT",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize:
-                                        SizeConfig.safeBlockHorizontal * 6,
-                                    fontWeight: FontWeight.bold,
-                                  )),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(
-                                  SizeConfig.safeBlockHorizontal * 2,
-                                  0,
-                                  0,
-                                  SizeConfig.safeBlockVertical * 1),
-                              child: Text("TEXT TEXT TEXT TEXT TEXT",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize:
-                                        SizeConfig.safeBlockHorizontal * 3.5,
-                                  )),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(
-                                  SizeConfig.safeBlockHorizontal * 2,
-                                  0,
-                                  0,
-                                  SizeConfig.safeBlockVertical * 1.5),
-                              child: Text(
-                                  "TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize:
-                                        SizeConfig.safeBlockHorizontal * 3.5,
-                                  )),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(
-                                  SizeConfig.safeBlockHorizontal * 2,
-                                  0,
-                                  0,
-                                  SizeConfig.safeBlockVertical * 1),
-                              child: Text("TEXT TEXT TEXT TEXT",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize:
-                                        SizeConfig.safeBlockHorizontal * 3.5,
-                                  )),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(
-                                  SizeConfig.safeBlockHorizontal * 2,
-                                  0,
-                                  0,
-                                  SizeConfig.safeBlockVertical * 1),
-                              child: Text("TEXT TEXT TEXT TEXT TEXT TEXT ",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize:
-                                        SizeConfig.safeBlockHorizontal * 3.5,
-                                  )),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(
-                                  SizeConfig.safeBlockHorizontal * 2,
-                                  0,
-                                  0,
-                                  SizeConfig.safeBlockVertical * 1),
-                              child: Text(
-                                  "TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize:
-                                        SizeConfig.safeBlockHorizontal * 3.5,
-                                  )),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(
-                                  SizeConfig.safeBlockHorizontal * 23,
-                                  SizeConfig.safeBlockVertical * 5,
-                                  0,
-                                  0),
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  // Handle button press
-                                },
-                                style: ButtonStyle(
-                                  padding: MaterialStateProperty.all(
-                                      EdgeInsets.symmetric(
-                                          vertical:
-                                              SizeConfig.safeBlockVertical * 2,
-                                          horizontal:
-                                              SizeConfig.safeBlockHorizontal *
-                                                  4)),
-                                  backgroundColor:
-                                      MaterialStateProperty.all(Colors.black),
-                                  foregroundColor:
-                                      MaterialStateProperty.all(Colors.white),
-                                  shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(
-                                          SizeConfig.safeBlockHorizontal * 1),
+                                  0, SizeConfig.safeBlockVertical * 7, 0, 0),
+                              child: SizedBox(
+                                height: SizeConfig.safeBlockVertical * 7,
+                                width: SizeConfig.safeBlockHorizontal * 50,
+                                child: ElevatedButton(
+                                  style: ButtonStyle(
+                                    backgroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            ColorTheme.secondaryColor),
+                                    shape: MaterialStateProperty.all<
+                                        RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(
+                                            SizeConfig.safeBlockHorizontal *
+                                                7.5), // 2% of screen width
+                                      ),
                                     ),
                                   ),
-                                  elevation: MaterialStateProperty.all(
-                                      SizeConfig.safeBlockHorizontal * 2),
-                                ),
-                                child: Text(
-                                  'Buy Subscription',
-                                  style: TextStyle(
-                                    fontSize:
-                                        SizeConfig.safeBlockHorizontal * 4,
-                                    fontWeight: FontWeight.bold,
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              SubscriptionScreen()),
+                                    );
+                                  },
+                                  child: Text(
+                                    'Buy Subscription',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: SizeConfig.blockSizeHorizontal *
+                                          4.5, // 5% of screen width
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 );
               },
             ),

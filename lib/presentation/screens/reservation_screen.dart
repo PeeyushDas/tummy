@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_pro/Components/scaffold.dart';
 import 'package:test_pro/presentation/screens/confirmation_screen.dart';
 import 'package:test_pro/utils/size_config.dart';
 
@@ -124,7 +125,7 @@ class _ReservationPageState extends State<ReservationPage> {
             child: Text(
               '$numberOfGuests',
               style: TextStyle(
-                  fontSize: 2.0 * SizeConfig.safeBlockHorizontal,
+                  fontSize: 4.0 * SizeConfig.safeBlockHorizontal,
                   color: Colors.white),
             ),
           ),
@@ -143,28 +144,24 @@ class _ReservationPageState extends State<ReservationPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Table Reservation',
-          style: TextStyle(fontSize: 1.8 * SizeConfig.safeBlockHorizontal),
-        ),
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(1.6 * SizeConfig.safeBlockHorizontal),
+    return buildScaffold(
+      context: context,
+      text: 'Table Reservation',
+      widget: Padding(
+        padding: EdgeInsets.all(5 * SizeConfig.safeBlockHorizontal),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+            SizedBox(height: 15.0 * SizeConfig.safeBlockVertical),
             buildPromotionCard(),
             SizedBox(height: 2.0 * SizeConfig.safeBlockVertical),
             buildDateTimePickers(),
-            SizedBox(height: 2.0 * SizeConfig.safeBlockVertical),
+            SizedBox(height: 3.0 * SizeConfig.safeBlockVertical),
             Text(
               'Number of Guests',
               style: TextStyle(
-                  fontSize: 1.6 * SizeConfig.safeBlockHorizontal,
+                  fontSize: 5 * SizeConfig.safeBlockHorizontal,
                   color: Colors.white),
             ),
             buildGuestNumberPicker(),
@@ -181,7 +178,9 @@ class _ReservationPageState extends State<ReservationPage> {
               },
               child: Text(
                 'Submit Reservation',
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 4 * SizeConfig.safeBlockHorizontal),
               ),
               style: ElevatedButton.styleFrom(
                 primary: Colors.deepPurple,

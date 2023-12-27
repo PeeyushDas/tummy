@@ -1,183 +1,124 @@
 import 'package:flutter/material.dart';
-import 'package:test_pro/Components/scaffold.dart';
-import 'package:test_pro/presentation/screens/exclusive_dine.dart';
-import 'package:test_pro/utils/size_config.dart';
 
-class RestaurantPage extends StatelessWidget {
-  const RestaurantPage({Key? key}) : super(key: key);
+class RestaurantPage extends StatefulWidget {
+  @override
+  _RestaurantPageState createState() => _RestaurantPageState();
+}
+
+class _RestaurantPageState extends State<RestaurantPage> {
+  final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
+  List<Restaurant> restaurants = List.generate(
+    10,
+    (index) => Restaurant(
+      name: 'Restaurant ${index + 1}',
+      description: 'Description for Restaurant ${index + 1}.',
+      image: 'assets/images/logo.png', // Replace with actual image paths
+      rating: (index % 5) + 1.0,
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
-
-    return buildScaffold(
-      text: "Restaurants",
-      widget: Padding(
-        padding: EdgeInsets.all(SizeConfig.safeBlockHorizontal * 2),
-        child: Column(
-          children: [
-            Container(
-              height: SizeConfig.safeBlockVertical * 7,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  ConstrainedBox(
-                    constraints: BoxConstraints(
-                      maxWidth: SizeConfig.safeBlockHorizontal * 25,
-                      minWidth: SizeConfig.safeBlockHorizontal * 12.5,
-                      maxHeight: SizeConfig.safeBlockVertical * 9,
-                      minHeight: SizeConfig.safeBlockVertical * 5,
-                    ),
-                    child: Container(
-                      padding:
-                          EdgeInsets.all(SizeConfig.safeBlockHorizontal * 2),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                            SizeConfig.safeBlockHorizontal * 12.5),
-                        color: const Color(0xff4b4b53),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          'Suggestions',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: SizeConfig.safeBlockHorizontal * 2),
-                  ConstrainedBox(
-                    constraints: BoxConstraints(
-                      maxWidth: SizeConfig.safeBlockHorizontal * 25,
-                      minWidth: SizeConfig.safeBlockHorizontal * 12.5,
-                      maxHeight: SizeConfig.safeBlockVertical * 9,
-                      minHeight: SizeConfig.safeBlockVertical * 5,
-                    ),
-                    child: Container(
-                      padding:
-                          EdgeInsets.all(SizeConfig.safeBlockHorizontal * 2),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                            SizeConfig.safeBlockHorizontal * 12.5),
-                        color: const Color(0xff4b4b53),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          'Suggestions',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: SizeConfig.safeBlockHorizontal * 2),
-                  ConstrainedBox(
-                    constraints: BoxConstraints(
-                      maxWidth: SizeConfig.safeBlockHorizontal * 25,
-                      minWidth: SizeConfig.safeBlockHorizontal * 12.5,
-                      maxHeight: SizeConfig.safeBlockVertical * 9,
-                      minHeight: SizeConfig.safeBlockVertical * 5,
-                    ),
-                    child: Container(
-                      padding:
-                          EdgeInsets.all(SizeConfig.safeBlockHorizontal * 2),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                            SizeConfig.safeBlockHorizontal * 12.5),
-                        color: const Color(0xff4b4b53),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          'Suggestions',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: SizeConfig.safeBlockVertical * 2),
-            Expanded(
-              child: ListView(
-                children: [
-                  Row(
-                    children: [
-                      RestaurantCard(),
-                      SizedBox(width: SizeConfig.safeBlockHorizontal * 2),
-                      RestaurantCard(),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      RestaurantCard(),
-                      SizedBox(width: SizeConfig.safeBlockHorizontal * 2),
-                      RestaurantCard(),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      RestaurantCard(),
-                      SizedBox(width: SizeConfig.safeBlockHorizontal * 2),
-                      RestaurantCard(),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ],
+    return Scaffold(
+      backgroundColor: Colors.grey[900],
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios_new_rounded,
+            color: Colors.white,
+          ),
+          onPressed: () {},
         ),
+        title: Text(
+          'Restaurants',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.black,
+      ),
+      body: AnimatedList(
+        key: _listKey,
+        initialItemCount: restaurants.length,
+        itemBuilder: (context, index, animation) {
+          return SlideTransition(
+            position: animation.drive(
+              Tween(begin: Offset(1, 0), end: Offset(0, 0))
+                  .chain(CurveTween(curve: Curves.easeInOut)),
+            ),
+            child: RestaurantCard(restaurant: restaurants[index]),
+          );
+        },
       ),
     );
   }
 }
 
+class Restaurant {
+  final String name;
+  final String description;
+  final String image;
+  final double rating;
+
+  Restaurant({
+    required this.name,
+    required this.description,
+    required this.image,
+    required this.rating,
+  });
+}
+
 class RestaurantCard extends StatelessWidget {
+  final Restaurant restaurant;
+
+  RestaurantCard({required this.restaurant});
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: SizeConfig.safeBlockVertical * 32,
-      width: SizeConfig.safeBlockHorizontal * 47,
-      child: InkWell(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => ExclusiveDineScreen()),
-          );
-        },
-        child: Card(
-          elevation: 5,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Image.network(
-                'https://via.placeholder.com/150', // Replace with actual image URL
-                fit: BoxFit.cover,
-                height: SizeConfig.safeBlockVertical * 18,
-              ),
-              Padding(
-                padding: EdgeInsets.all(SizeConfig.safeBlockHorizontal * 2),
-                child: Text(
-                  'Restaurant Name', // Replace with actual restaurant name
+    return Card(
+      color: Colors.grey[850],
+      elevation: 5,
+      margin: EdgeInsets.all(10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Image.asset(
+            restaurant.image,
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: 200,
+          ),
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  restaurant.name,
                   style: TextStyle(
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    fontSize: SizeConfig.safeBlockHorizontal * 4,
+                    color: Colors.orangeAccent,
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: SizeConfig.safeBlockHorizontal * 2),
-                child: const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('Cuisine'), // Replace with actual cuisine type
-                    Icon(Icons.star, color: Colors.amber), // Rating star icon
-                    Text('4.5'), // Replace with actual rating
-                  ],
+                SizedBox(height: 5),
+                Text(
+                  restaurant.description,
+                  style: TextStyle(fontSize: 16, color: Colors.white),
                 ),
-              ),
-            ],
+                SizedBox(height: 10),
+                Row(
+                  children: List.generate(5, (index) {
+                    return Icon(
+                      index < restaurant.rating
+                          ? Icons.star
+                          : Icons.star_border,
+                      color: Colors.amber,
+                    );
+                  }),
+                ),
+              ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
